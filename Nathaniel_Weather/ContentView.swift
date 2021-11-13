@@ -10,6 +10,7 @@ import CoreLocation
 
 struct ContentView: View {
     @EnvironmentObject var locationHelper: LocationHelper
+    @EnvironmentObject var fetcher : WeatherFetcher
 
     var body: some View {
         VStack{

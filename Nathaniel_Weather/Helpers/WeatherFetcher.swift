@@ -12,7 +12,8 @@ class WeatherFetcher : ObservableObject{
     
     @Published var weatherObj = Weather()
     
-    init(){
+    init(lat: Double, long: Double){
+        self.apiURL = "https://api.weatherapi.com/v1/current.json?key=5426557749024a33855183308211311&q=\(lat),\(long)"
         fetchDataFromAPI()
     }
     
