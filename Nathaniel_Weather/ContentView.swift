@@ -16,6 +16,14 @@ struct ContentView: View {
         VStack{
             if (self.locationHelper.currentLocation != nil){
                 Text("\(fetcher.weatherObj.location.name), \(fetcher.weatherObj.location.country)")
+                Text("Condition: \(fetcher.weatherObj.current.condition.text)")
+                Text("Temp: \(fetcher.weatherObj.current.temp)")
+                Text("Feels Like: \(fetcher.weatherObj.current.feelsLike)")
+                Text("Wind KPH: \(fetcher.weatherObj.current.windKph)")
+                Text("Wind Direction: \(fetcher.weatherObj.current.windDir)")
+                Text("Humidity: \(fetcher.weatherObj.current.humidity)")
+                Text("UV: \(fetcher.weatherObj.current.uv)")
+                Text("Vis: \(fetcher.weatherObj.current.vis)")
                 
             } else {
                 Text("Wait a moment.. Make sure location permissions are on")
