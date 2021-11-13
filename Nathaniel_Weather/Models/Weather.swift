@@ -83,7 +83,11 @@ struct Current: Codable{
         self.humidity = try response.decodeIfPresent(Int.self, forKey: .humidity) ?? 0
         self.uv = try response.decodeIfPresent(Double.self, forKey: .uv) ?? 0.0
         self.vis = try response.decodeIfPresent(Double.self, forKey: .vis) ?? 0.0
-        condition = try Condition(from: decoder)
+        let conditionContainer = try response.decodeIfPresent(Condition.self, forKey: .condition)
+        
+        condition = Condition()
+        condition.text = conditionContainer?.text ?? "2text"
+        condition.icon = conditionContainer?.icon ?? "i2con"
     }
 }
 
@@ -103,7 +107,7 @@ struct Condition : Codable {
     init(from decoder: Decoder) throws {
         let response = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.text = try response.decodeIfPresent(String.self, forKey: .text) ?? "text"
-        self.icon = try response.decodeIfPresent(String.self, forKey: .icon) ?? "icon"
+        self.text = try response.decodeIfPresent(String.self, forKey: .text) ?? "initdecodetext"
+        self.icon = try response.decodeIfPresent(String.self, forKey: .icon) ?? "initdecodeicon"
     }
 }
