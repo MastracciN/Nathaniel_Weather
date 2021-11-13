@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Weather: Codable, Identifiable{
+    var temp : Double
+    var feelsLike : Double
+    
+}

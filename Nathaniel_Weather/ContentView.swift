@@ -6,26 +6,34 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
     @EnvironmentObject var locationHelper: LocationHelper
-    let hello = "hello"
+
     var body: some View {
         VStack{
             if (self.locationHelper.currentLocation != nil){
-                Text(self.locationHelper.address)
+                Text("\(self.locationHelper.currentLocation?.coordinate.latitude ?? 40.0000)")
+                
             } else {
                 Text("Wait a moment.. Make sure location permissions are on")
             }
             
-        }//VStack
+        }.onAppear(perform: getWeather)//VStack
     }//body
     
+    func getWeather(){
+        
+        if (self.locationHelper.currentLocation != nil){
+            
+        } else {
+            
+        }
+    }
+    
+    
 }
-
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
