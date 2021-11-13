@@ -8,12 +8,13 @@
 import Foundation
 
 class WeatherFetcher : ObservableObject{
-    var apiURL = "https://api.weatherapi.com/v1/current.json?key=5426557749024a33855183308211311&q="
+    //@EnvironmentObject var locationHelper : LocationHelper
+    
+    var apiURL = "https://api.weatherapi.com/v1/current.json?key=5426557749024a33855183308211311&q=43.52,-79.88"
     
     @Published var weatherObj = Weather()
     
-    init(lat: Double, long: Double){
-        self.apiURL = "https://api.weatherapi.com/v1/current.json?key=5426557749024a33855183308211311&q=\(lat),\(long)"
+    init(){
         fetchDataFromAPI()
     }
     

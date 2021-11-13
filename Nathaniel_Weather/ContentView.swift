@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             if (self.locationHelper.currentLocation != nil){
-                Text("\(self.locationHelper.currentLocation?.coordinate.latitude ?? 40.0000)")
+                Text(fetcher.weatherObj.location.name)
                 
             } else {
                 Text("Wait a moment.. Make sure location permissions are on")
@@ -25,9 +25,8 @@ struct ContentView: View {
     }//body
     
     func getWeather(){
-        
         if (self.locationHelper.currentLocation != nil){
-            
+            fetcher.fetchDataFromAPI()
         } else {
             
         }

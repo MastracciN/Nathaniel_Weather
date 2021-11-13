@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct Nathaniel_WeatherApp: App {
     let locationHelper = LocationHelper()
-    var fetcher = WeatherFetcher()
+    let fetcher = WeatherFetcher()
     
     var body: some Scene {
         WindowGroup {
