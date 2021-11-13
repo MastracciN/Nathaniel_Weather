@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Nathaniel_WeatherApp: App {
+    let locationHelper = LocationHelper()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(locationHelper)
         }
     }
 }

@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var locationHelper: LocationHelper
+    let hello = "hello"
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+        VStack{
+            if (self.locationHelper.currentLocation != nil){
+                Text(self.locationHelper.address)
+            } else {
+                Text("Wait a moment.. Make sure location permissions are on")
+            }
+            
+        }//VStack
+    }//body
+    
 }
+
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
