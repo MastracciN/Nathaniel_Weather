@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import CoreLocation
 
 struct ContentView: View {
@@ -15,6 +16,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             if (self.locationHelper.currentLocation != nil){
+//                AsyncImage(url: URL(string: fetcher.weatherObj.current.condition.icon))
                 Text("\(fetcher.weatherObj.location.name), \(fetcher.weatherObj.location.country)")
                 Text("Condition: \(fetcher.weatherObj.current.condition.text)")
                 Text("Temp: \(fetcher.weatherObj.current.temp)")
@@ -34,7 +36,7 @@ struct ContentView: View {
     
     func getWeather(){
         if (self.locationHelper.currentLocation != nil){
-            fetcher.fetchDataFromAPI()
+            fetcher.fetchDataFromAPI(lat: self.locationHelper.currentLocation?.coordinate.latitude ?? 40, long: self.locationHelper.currentLocation?.coordinate.longitude ?? 40)
         } else {
             
         }
