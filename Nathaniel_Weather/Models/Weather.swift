@@ -20,11 +20,6 @@ struct Weather: Codable{
         current = Current()
     }
     
-//    init(from decoder: Decoder) throws {
-//    
-//
-//    }
-    
 }
 
 struct Location: Codable{
@@ -77,6 +72,19 @@ struct Current: Codable{
         vis = 0.0
         condition = Condition()
     }
+    
+    init(from decoder: Decoder) throws {
+        let response = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.temp = try response.decodeIfPresent(Double.self, forKey: .temp) ?? 0.0
+        self.feelsLike = try response.decodeIfPresent(Double.self, forKey: .feelsLike) ?? 0.0
+        self.windKph = try response.decodeIfPresent(Double.self, forKey: .windKph) ?? 0.0
+        self.windDir = try response.decodeIfPresent(String.self, forKey: .windDir) ?? "windDir"
+        self.humidity = try response.decodeIfPresent(Int.self, forKey: .humidity) ?? 0
+        self.uv = try response.decodeIfPresent(Double.self, forKey: .uv) ?? 0.0
+        self.vis = try response.decodeIfPresent(Double.self, forKey: .vis) ?? 0.0
+        condition = try Condition(from: decoder)
+    }
 }
 
 struct Condition : Codable {
@@ -90,5 +98,12 @@ struct Condition : Codable {
     init(){
         text = "text"
         icon = "icon"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let response = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.text = try response.decodeIfPresent(String.self, forKey: .text) ?? "text"
+        self.icon = try response.decodeIfPresent(String.self, forKey: .icon) ?? "icon"
     }
 }

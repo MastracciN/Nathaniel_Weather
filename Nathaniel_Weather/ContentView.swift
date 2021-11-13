@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             if (self.locationHelper.currentLocation != nil){
-                Text(fetcher.weatherObj.location.name)
+                Text("\(fetcher.weatherObj.location.name), \(fetcher.weatherObj.location.country)")
                 
             } else {
                 Text("Wait a moment.. Make sure location permissions are on")
